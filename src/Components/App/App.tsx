@@ -2,8 +2,8 @@ import { useState } from 'react';
 import CafeInfo from '../CafeInfo/CafeInfo';
 import css from './App.module.css';
 import type { VoteType } from '../../types/Votes';
-import type { Votes } from '../../types/Votes';
-import VoteOptions from '../VoteOptions/VoteOptions';
+// import type { Votes } from '../../types/Votes';
+import { VoteOptions } from '../VoteOptions/VoteOptions';
 import VoteStats from '../VoteStats/VoteStats';
 
 export default function App() {
@@ -33,12 +33,8 @@ export default function App() {
     <>
       <div className={css.app}>
         <CafeInfo />
-        <VoteOptions
-          onVote={handleVote}
-          onReset={resetVotes}
-          canReset={isReset}
-        />
-        <VoteStats />
+        <VoteOptions onVote={handleVote} onReset={resetVotes} canReset={true} />
+        {/* <VoteStats votes={votes} /> */}
       </div>
     </>
   );
