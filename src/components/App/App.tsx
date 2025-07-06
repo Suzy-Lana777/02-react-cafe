@@ -14,10 +14,12 @@ export default function App() {
   });
 
   const handleVote = (type: VoteType) => {
-    setVotes((prevVotes) => ({
-      ...prevVotes,
-      [type]: prevVotes[type] + 1,
-    }));
+    setVotes(
+      (prevVotes: Votes): Votes => ({
+        ...prevVotes,
+        [type]: prevVotes[type] + 1,
+      }),
+    );
   };
 
   const resetVotes = () => {
