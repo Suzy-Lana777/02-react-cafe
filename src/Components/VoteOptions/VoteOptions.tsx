@@ -1,4 +1,3 @@
-import React from 'react';
 import css from './VoteOptions.module.css';
 import type { VoteType } from '../../types/Votes';
 
@@ -7,11 +6,11 @@ export interface VoteOptionsProps {
   onReset: () => void;
   canReset: boolean;
 }
-export const VoteOptions: React.FC<VoteOptionsProps> = ({
+export default function VoteOptions({
   onVote,
   onReset,
   canReset,
-}) => {
+}: VoteOptionsProps) {
   return (
     <div className={css.container}>
       <button className={css.button} onClick={() => onVote('good')}>
@@ -30,4 +29,4 @@ export const VoteOptions: React.FC<VoteOptionsProps> = ({
       )}
     </div>
   );
-};
+}

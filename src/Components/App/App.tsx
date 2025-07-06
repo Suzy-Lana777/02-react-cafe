@@ -1,19 +1,17 @@
 import { useState } from 'react';
 import CafeInfo from '../CafeInfo/CafeInfo';
 import css from './App.module.css';
-import type { VoteType } from '../../types/Votes';
-// import type { Votes } from '../../types/Votes';
-import { VoteOptions } from '../VoteOptions/VoteOptions';
+import type { VoteType, Votes } from '../../types/Votes';
+import VoteOptions from '../VoteOptions/VoteOptions';
 import VoteStats from '../VoteStats/VoteStats';
 
 export default function App() {
-  const [votes, setVotes] = useState({
+  const [votes, setVotes] = useState<Votes>({
     good: 0,
     neutral: 0,
     bad: 0,
   });
 
-  // Функція обробки голосу
   const handleVote = (type: VoteType) => {
     setVotes((prevVotes) => ({
       ...prevVotes,
@@ -21,7 +19,6 @@ export default function App() {
     }));
   };
 
-  // Функція для скидання голосів
   const resetVotes = () => {
     setVotes({
       good: 0,
@@ -29,13 +26,20 @@ export default function App() {
       bad: 0,
     });
   };
+
+  const totalVotes = votes.good + votes.neutral + votes.bad;
+  const positiveRate =
+    totalVotes > 0 ? Math.round((votes.good / totalVotes) * 100) : 0;
+
   return (
-    <>
-      <div className={css.app}>
-        <CafeInfo />
-        <VoteOptions onVote={handleVote} onReset={resetVotes} canReset={true} />
-        {/* <VoteStats votes={votes} /> */}
-      </div>
-    </>
+    <div className={css.app}>
+      <CafeInfo />
+      <VoteOptions onVote={handleVote} onReset={resetVotes} canReset={true} />
+      <VoteStats
+        votes={votes}
+        totalVotes={totalVotes}
+        positiveRate={positiveRate}
+      />
+    </div>
   );
 }
