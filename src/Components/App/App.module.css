@@ -33,6 +33,14 @@
   }
 }
 
+body {
+  background: linear-gradient(rgba(47, 45, 45, 0.5), rgba(113, 106, 106, 0.5)),
+    url('/moroccan-flower.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .app {
   min-height: 100vh;
   padding: 40px 20px;
