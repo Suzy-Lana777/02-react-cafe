@@ -35,7 +35,7 @@ export default function App() {
     ? Math.round((votes.good / totalVotes) * 100)
     : 0;
 
-  const seeReset = totalVotes > 0;
+  const canReset = totalVotes > 0;
 
   return (
     <div className={css.app}>
@@ -43,7 +43,7 @@ export default function App() {
       <VoteOptions
         onVote={handleVote}
         onReset={resetVotes}
-        canReset={seeReset}
+        canReset={canReset}
       />
       {totalVotes > 0 ? (
         <VoteStats

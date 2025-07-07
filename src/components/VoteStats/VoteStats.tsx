@@ -28,7 +28,7 @@ export default function VoteStats({
         Total: <strong>{totalVotes}</strong>
       </p>
       <p className={styles.stat}>
-        Positive: <strong>{positiveRate}</strong>
+        Positive: <strong>{positiveRate.toFixed(1)}%</strong>
       </p>
     </div>
   );
